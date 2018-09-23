@@ -1,5 +1,8 @@
 package ro.jademy.millionaire;
 
+import javax.activation.MimeTypeParameterList;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -7,36 +10,43 @@ import java.util.Scanner;
  */
 public class Game {
 
-    private int currentLevel=1;
-    private int option;
+    private int currentLevel = 1;
+    List<Question> questionList = new ArrayList<>();
+    private Scanner scanner;
 
-    public  void start() {
+    public Game(List<Question> questionList,Scanner scanner) {
+        this.questionList.addAll(questionList);
+        this.scanner = scanner;
+    }
+
+    public void start() {
 
     }
-    public void askQuestion(){
-        //show question on screen
 
+    public  void getQuestionForLevel(int level) {
+        System.out.println("Current level is " + currentLevel);
+        for (Question question : questionList ){
+            if(question.getDifficultyLevel()==currentLevel){
+                question.showQuestion();
+            }
+        }
     }
-    public void answerQuestion(){
-        //get user input and check if corect
 
-
-    }
-    public void fiftyFifty(){
+    public void fiftyFifty() {
         //show the same question but with only two possible answers
     }
 
-    public  int getCurrentLevel()
-    {
-        return  currentLevel;
+    public int getCurrentLevel() {
+        return currentLevel;
     }
-    public  void setOption (int option){
+
+    public void setOption(int option) {
         option = option;
     }
 
-    public Game(int currentLevel, int option) {
-        this.currentLevel = currentLevel;
-        this.option = option;
+    public  boolean isFinished(){
+        return  true;
     }
+
 }
 

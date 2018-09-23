@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * Created by alexandrumanolache on 17/09/2018.
  */
 public class Answer {
+
     private String answer;
     private boolean isCorrect;
 
@@ -44,11 +45,12 @@ public class Answer {
         this.isCorrect = false;
     }
 
-    public  String getAnswer(){
+    public String getAnswer() {
         return answer;
     }
-    public  boolean isCorrect(){
-        return  isCorrect;
+
+    public boolean isCorrect() {
+        return isCorrect;
     }
 }
 
