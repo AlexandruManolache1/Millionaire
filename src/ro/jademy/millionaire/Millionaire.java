@@ -1,5 +1,6 @@
 package ro.jademy.millionaire;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,23 +12,44 @@ import java.util.Random;
 
 public class Millionaire {
 
+    private static List<Question> question1 = new ArrayList<>();
+    private static List<Question> question2 = new ArrayList<>();
+    private static List<Question> question3 = new ArrayList<>();
+
+
     public static void main(String[] args) {
-        System.out.println(
-            "Welcome to Who Wants to be a Millionaire!You will have to answer 10 questions correctly in a row. \n But you have 50/50 option \n So, lets begin! You have a chance to win ONE MILLION DOLLARS!!! \n");
+
+        initQuestions();
+        ArrayList<Question> gameQuestions = getGameQuestions();
+        Scanner scan  = new Scanner(System.in);
+
+        System.out.println("Welcome to Who Wants to be a Millionaire!Y \n");
+
+        Game game = new Game(gameQuestions,scan);
+        do {
+            game.start();
+        }
+        while (game.isFinished());//is finished not developed yet
+
+    }
+
+    private static void initQuestions() {
+
         // intrebarea 1
 
-        Answer answer1 = new Answer("1919");
-        Answer answer2 = new Answer("1920");
-        Answer answer3 = new Answer("1921");
-        Answer answer4 = new Answer("1918", true);
+        Answer answer11 = new Answer("1919");
+        Answer answer12 = new Answer("1920");
+        Answer answer13 = new Answer("1921");
+        Answer answer14 = new Answer("1918", true);
 
         ArrayList<Answer> answerquestion1 = new ArrayList<>();
-        answerquestion1.add(answer1);
-        answerquestion1.add(answer2);
-        answerquestion1.add(answer3);
-        answerquestion1.add(answer4);
+        answerquestion1.add(answer11);
+        answerquestion1.add(answer12);
+        answerquestion1.add(answer13);
+        answerquestion1.add(answer14);
 
-        Question question1 = new Question("Cand s-a unit Romania", 1, answerquestion1);
+       Question question11 = new Question("Cand s-a unit Romania", 1, answerquestion1);
+        question1.add(question11);
 
         ///intrebarea 2
 
@@ -37,12 +59,13 @@ public class Millionaire {
         Answer answer24 = new Answer("2002", true);
 
         ArrayList<Answer> answerquestion2 = new ArrayList<>();
-        answerquestion1.add(answer21);
-        answerquestion1.add(answer22);
-        answerquestion1.add(answer23);
-        answerquestion1.add(answer24);
+        answerquestion2.add(answer21);
+        answerquestion2.add(answer22);
+        answerquestion2.add(answer23);
+        answerquestion2.add(answer24);
 
-        Question question2 = new Question("Cand a castigat Brazilia ultima data campionat Mondial", 2, answerquestion2);
+        Question question22 = new Question("Cand a castigat Brazilia ultima data campionat Mondial", 2, answerquestion2);
+        question2.add(question22);
 
         ///intrebarea 3
 
@@ -52,12 +75,12 @@ public class Millionaire {
         Answer answer34 = new Answer("1821", true);
 
         ArrayList<Answer> answerquestion3 = new ArrayList<>();
-        answerquestion1.add(answer21);
-        answerquestion1.add(answer22);
-        answerquestion1.add(answer23);
-        answerquestion1.add(answer24);
+        answerquestion3.add(answer31);
+        answerquestion3.add(answer32);
+        answerquestion3.add(answer33);
+        answerquestion3.add(answer34);
 
-        Question question3 = new Question("Cand a murit Napoleon", 3, answerquestion3);
+        Question question33 = new Question("Cand a murit Napoleon", 3, answerquestion3);
 
         ///intrebarea 4
 
@@ -67,25 +90,35 @@ public class Millionaire {
         Answer answer44 = new Answer("Truman");
 
         ArrayList<Answer> answerquestion4 = new ArrayList<>();
-        answerquestion1.add(answer21);
-        answerquestion1.add(answer22);
-        answerquestion1.add(answer23);
-        answerquestion1.add(answer24);
+        answerquestion4.add(answer41);
+        answerquestion4.add(answer42);
+        answerquestion4.add(answer43);
+        answerquestion4.add(answer44);
 
-        Question question4 = new Question("Primul presedinte al Americii", 3, answerquestion4);
+        Question question43 = new Question("Primul presedinte al Americii", 3, answerquestion4);
 
-        ArrayList<Question> allquestions = new ArrayList<>();
-        allquestions.add(question1);
-        allquestions.add(question2);
-        allquestions.add(question3);
+        question3.add(question33);
+        question3.add(question43);
 
-        // trebuie sa pasam un subset de allquestions care sa contina cate o intrebare pentru fiecare nivel de dificultate
+    }
 
-        ArrayList<Question> oneQuestionforLevel = new ArrayList<Question>(allquestions.);
+    private static ArrayList<Question> getGameQuestions(){
 
-        Game game = new Game(allquestionssubset);
+        ArrayList<Question>gameQuestions  = new ArrayList<>();
+        Random r = new Random();
 
+        int randomLevel1Index = r.nextInt(question1.size());
+        gameQuestions.add(question1.get(randomLevel1Index));
+
+        int randomLevel2Index = r.nextInt(question2.size());
+        gameQuestions.add(question2.get(randomLevel2Index));
+
+        int randomLevel3Index = r.nextInt(question3.size());
+        gameQuestions.add(question3.get(randomLevel3Index));
+
+        return gameQuestions;
 
     }
 
 }
+
