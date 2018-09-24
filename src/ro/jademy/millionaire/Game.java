@@ -10,6 +10,7 @@ import java.util.Scanner;
  */
 public class Game {
 
+    private static final int MAX_LEVEL = 15;
     private int currentLevel = 1;
     List<Question> questionList = new ArrayList<>();
     private Scanner scanner;
@@ -20,7 +21,10 @@ public class Game {
     }
 
     public void start() {
-
+        for (int i = 0; i < MAX_LEVEL;i++)
+        {
+           getQuestionForLevel(i);
+        }
     }
 
     public  void getQuestionForLevel(int level) {
@@ -28,6 +32,8 @@ public class Game {
         for (Question question : questionList ){
             if(question.getDifficultyLevel()==currentLevel){
                 question.showQuestion();
+
+                //citim inputul jucatorului
             }
         }
     }
@@ -45,8 +51,7 @@ public class Game {
     }
 
     public  boolean isFinished(){
-        return  true;
+        return  currentLevel== MAX_LEVEL;
     }
 
 }
-

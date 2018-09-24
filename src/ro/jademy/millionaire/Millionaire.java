@@ -30,7 +30,6 @@ public class Millionaire {
             game.start();
         }
         while (game.isFinished());//is finished not developed yet
-
     }
 
     private static void initQuestions() {

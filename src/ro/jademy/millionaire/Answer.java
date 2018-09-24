@@ -52,6 +52,14 @@ public class Answer {
     public boolean isCorrect() {
         return isCorrect;
     }
+
+    @Override
+    public String toString() {
+        return "Answer{" +
+            "answer='" + answer + '\'' +
+            ", isCorrect=" + isCorrect +
+            '}';
+    }
 }
 
 

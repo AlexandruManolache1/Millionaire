@@ -7,8 +7,6 @@ import java.util.List;
  * Created by alexandrumanolache on 17/09/2018.
  */
 public class Question {
-
-    private static final int MAX_LEVEL = 15;
     private String question;
     private int difficultyLevel; //max 15
     private List<Answer> answerList = new ArrayList<>();
@@ -45,5 +43,14 @@ public class Question {
 
     public List<Answer> getAnswerList() {
         return answerList;
+    }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+            "question='" + question + '\'' +
+            ", difficultyLevel=" + difficultyLevel +
+            ", answerList=" + answerList +
+            '}';
     }
 }
