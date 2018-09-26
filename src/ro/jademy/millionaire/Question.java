@@ -7,6 +7,7 @@ import java.util.List;
  * Created by alexandrumanolache on 17/09/2018.
  */
 public class Question {
+
     private String question;
     private int difficultyLevel; //max 15
     private List<Answer> answerList = new ArrayList<>();
@@ -27,12 +28,32 @@ public class Question {
     }
 
     public void showQuestion() {
-            System.out.println(question);
-            for(int i=0;i<answerList.size();i++){
-                String prefix = getPrefix ( i );
-            System.out.println(prefix+answerList.get(i).getAnswer());
+        System.out.println(question);
+        for (int i = 0; i < answerList.size(); i++) {
+            String prefix = getPrefix(i);
+            System.out.println(prefix + answerList.get(i).getAnswer());
         }
     }
+
+    public void fiftyFifty() {
+        //show the same question but with only two possible answers
+        System.out.println(question);
+        for (int i = 0; i < answerList.size(); i++) {
+            if (answerList.get(i).isCorrect()) {
+                String prefix = getPrefix(i);
+                System.out.println(prefix + answerList.get(i).getAnswer());
+                i = answerList.size();
+            }
+        }
+        for (int j = 0; j < answerList.size(); j++) {
+            if (!answerList.get(j).isCorrect()) {
+                String prefix = getPrefix(j);
+                System.out.println(prefix + answerList.get(j).getAnswer());
+                j = answerList.size();
+            }
+        }
+    }
+
 
     public String getPrefix(int i) {
         switch (i) {

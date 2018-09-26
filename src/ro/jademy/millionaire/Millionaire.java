@@ -23,7 +23,9 @@ public class Millionaire {
         ArrayList<Question> gameQuestions = getGameQuestions();
         Scanner scan  = new Scanner(System.in);
 
-        System.out.println("Welcome to Who Wants to be a Millionaire!Y \n");
+        System.out.println("\n");
+        System.out.println("Welcome to Who Wants to be a Millionaire!Y");
+        System.out.println("Write <Fifty> if you need fifty fifty option \n");
 
         Game game = new Game(gameQuestions,scan);
         do {
@@ -120,4 +122,3 @@ public class Millionaire {
     }
 
 }
-
