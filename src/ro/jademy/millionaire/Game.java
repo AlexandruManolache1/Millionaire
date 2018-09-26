@@ -1,6 +1,5 @@
 package ro.jademy.millionaire;
 
-import javax.activation.MimeTypeParameterList;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -15,31 +14,42 @@ public class Game {
     List<Question> questionList = new ArrayList<>();
     private Scanner scanner;
 
-    public Game(List<Question> questionList,Scanner scanner) {
+    public Game(List<Question> questionList, Scanner scanner) {
         this.questionList.addAll(questionList);
         this.scanner = scanner;
     }
 
     public void start() {
-        for (int i = 0; i < MAX_LEVEL;i++)
-        {
-           getQuestionForLevel(i);
+        do{
+            getQuestionForLevel(currentLevel);
         }
+        while ( currentLevel==MAX_LEVEL);
     }
 
-    public  void getQuestionForLevel(int level) {
-        System.out.println("Current level is " + currentLevel);
-        for (Question question : questionList ){
-            if(question.getDifficultyLevel()==currentLevel){
+    public void getQuestionForLevel(int level) {
+        for (Question question : questionList) {
+            if (question.getDifficultyLevel() == currentLevel) {
+                System.out.println("Current level is " + currentLevel);
                 question.showQuestion();
-
+                System.out.println("Do you need fifty fifty option; Y/N");
                 //citim inputul jucatorului
+                String answerGiven = scanner.next();
+               // System.out.println("you choose option " + answerGiven + " " + question.getCorrectAnswer().getAnswer());
+                if (question.getCorrectAnswer().getAnswer().equals(answerGiven)) {
+                    System.out.println("Correct");
+                    currentLevel = currentLevel + 1;
+                } else {
+                    System.out.println("Incorrect. Game Finished");
+                    break;
+                }
+
             }
         }
     }
 
     public void fiftyFifty() {
         //show the same question but with only two possible answers
+
     }
 
     public int getCurrentLevel() {
@@ -50,8 +60,8 @@ public class Game {
         option = option;
     }
 
-    public  boolean isFinished(){
-        return  currentLevel== MAX_LEVEL;
+    public boolean isFinished() {
+        return currentLevel == MAX_LEVEL;
     }
 
 }

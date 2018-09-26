@@ -27,10 +27,27 @@ public class Question {
     }
 
     public void showQuestion() {
-            System.out.println(question.toString());
+            System.out.println(question);
             for(int i=0;i<answerList.size();i++){
-            System.out.println(i+1+") "+answerList.get(i));
+                String prefix = getPrefix ( i );
+            System.out.println(prefix+answerList.get(i).getAnswer());
         }
+    }
+
+    public String getPrefix(int i) {
+        switch (i) {
+            case 0:
+                return "A ";
+            case 1:
+                return "B ";
+            case 3:
+                return "C ";
+            case 4:
+                return "D ";
+            default:
+                return "A ";
+        }
+
     }
 
     public String getQuestion() {

@@ -83,7 +83,7 @@ public class Millionaire {
 
         ///intrebarea 4
 
-        Answer answer41 = new Answer("G Washington", true);
+        Answer answer41 = new Answer("GW", true);
         Answer answer42 = new Answer("Roosvelt");
         Answer answer43 = new Answer("Obama");
         Answer answer44 = new Answer("Truman");
